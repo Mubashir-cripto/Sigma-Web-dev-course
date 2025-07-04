@@ -1,0 +1,42 @@
+.red
+{
+    color: red;
+}
+
+.bg-yellow
+{
+    background-color: yellow;
+}
+
+#firstdiv    /* # is id . is class*/
+{
+   /*background-color:rgb(222, 136, 136) ;*/
+}
+
+
+
+
+.green
+{
+    color: rgb(244, 21, 21);
+}
+
+.pink
+{
+    background-color: rgb(23, 90, 90);
+}
+
+.red{
+    color: aqua;
+}
+
+#third-div
+{
+    background-color: #8c84ff;
+}
+
+
+
+
+
+
