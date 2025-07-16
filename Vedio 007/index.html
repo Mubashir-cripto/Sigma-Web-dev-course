@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms - lets learn it</title>
+</head>
+
+<body>
+    <form action="post">
+        <h1>Form to apply for sigma web development course - TA</h1>
+        <div>
+            <label for="username">Enter your username</label>
+            <input type="text" id="username" name="username" placeholder="Enter your username" autofocus>
+
+        </div>
+
+        <div>
+            <input type="radio" id="male" name="gender" value="male">
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female">
+            <label for="female">Female</label>
+            <input type="radio" id="others" name="gender" value="others">
+            <label for="others">Others</label>
+        </div>
+
+        <div>
+            <input type="checkbox" id="subscribe" name="subscribe" value="yes">
+            <label for="subscribe">Subscribe to newschannel</label>
+        </div>
+
+        <div>
+            <input type="checkbox" id="dosubscribe" name="dosubscribe" value="yes">
+            <label for="dosubscribe">subscribe our chanel for free today </label>
+        </div>
+
+        <div>
+            <label for="comment">Enter your comment here</label>
+            <br>
+            <textarea name="comment" id="comment" rows="4" cols="50" autofocus>
+            </textarea>
+        </div>
+        <div>
+            <select name="fruits">
+                <option value="apple">Apple</option>
+                <option value="banana">Banana</option>
+                <option value="cherry">Cherry</option>
+            </select>
+        </div>
+
+        <div>
+            <select name="countryToVisit">
+                <option value="Iran">Iran</option>
+                <option value="Afghanistan">Afghanistan</option>
+                <option value="India">India</option>
+        </div>
+
+        <div>
+            <form action="/submit">
+                <textarea name="comment" rows="4" cols="50">Enter your comment here...</textarea>
+                <select name="fruits">
+                    <option value="apple">Apple</option>
+                    <option value="banana">Banana</option>
+                    <option value="cherry">Cherry</option>
+                </select>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </form>
+</body>
+
+</html>
