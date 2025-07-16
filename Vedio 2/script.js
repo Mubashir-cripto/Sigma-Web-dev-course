@@ -1,1 +1,0 @@
-alert("Hi User! Welcome to our website")
