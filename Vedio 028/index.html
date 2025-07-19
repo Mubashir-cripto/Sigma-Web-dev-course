@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position Properties</title>
+    <style> 
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .parrent {
+            padding: 43px;
+            margin: 34px;
+            border: 2px solid blue;
+            /* position: relative; */
+
+            /* Exceptions: transform, filter ,or perspective properties can also make an element appear as positioned*/
+            /* transform: translate(0); */
+
+            /* filter: invert(); */
+            /* filter: invert(0); */
+
+            /* perspective: 0em; */
+
+        }
+
+        .box {
+            height: 139px;
+            width: 80vw;
+            padding: 3px;
+            margin: 3px;
+            border: 2px solid black;
+        }
+
+        .box1 {
+            background-color: rgb(19, 184, 4);
+            /* position: sticky;
+            top: 0px;
+            height: 111px;
+            width: 100%;
+            margin: 0; */
+            padding: 0;
+
+            /* Checks who to be reliative with, Gets relative position with its nearest its ansistor*/
+            position: absolute;
+            top: 0px;
+            left: 3px;
+
+            /* position: relative; */
+            /* z-index: 1; */
+        }
+
+        .box2 {
+            background-color: aqua;
+            /* position: relative;
+            top: 34px;
+            left: 54px; */
+
+        }
+
+        .box3 {
+            background-color: black;
+            /* position: fixed;
+            bottom: 0px;
+            left: 8vw;
+            height: 111px; */
+        }
+
+        .box4 {
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>CSS Position Property</h1>
+    <div class="parrent">
+        <div class="box box1"></div>
+        <div class="box box2"></div>
+        <div class="box box3"></div>
+        <div class="box box4"></div>
+    </div>
+</body>
+
+</html>
