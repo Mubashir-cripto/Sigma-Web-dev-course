@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Design Card</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+
+        .grandParent {
+            height: 95vh;
+            width: 40vw;
+            margin: auto;
+            position: relative;
+            top: 19px;
+            border: 2px solid black;
+        }
+
+        .parent {
+            border: 2px solid whitesmoke;
+            height: 90vh;
+            width: 31vw;
+            margin: auto;
+            position: relative;
+            top: 19px;
+            /* border-style: 100px; */
+            border-radius: 17px;
+            box-shadow: 0px 0px 3px 3px rgba(134, 134, 134, 0.582);
+        }
+
+        .box {
+            position: relative;
+            height: 20px;
+            width: 12px;
+            padding: 34px;
+            /* margin: 80% ; */
+
+            margin: auto;
+            border: 2px solid rgb(18, 19, 18);
+        }
+
+        .box1 {
+            height: 120px;
+            width: 300px;
+            position: relative;
+            top: 39px;
+            margin: auto;
+            border: 2px solid white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            left: 80px;
+        }
+
+        .box2 {
+            text-align: center;
+            position: relative;
+            top: 40px;
+            border-radius: 209px;
+            height: 1.2vh;
+            width: 5vw;
+            border: 2px solid whitesmoke;
+            text-align: center;
+            left: 27px;
+            margin: auto;
+            padding: 9px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            /* color: silver; */
+            font-weight: 400;
+            font-size: medium;
+        }
+
+        .box3 {
+            text-align: center;
+            position: relative;
+            top: 40px;
+            border-radius: 209px;
+            height: 1.2vh;
+            width: 3.5vw;
+            border: 2px solid whitesmoke;
+            text-align: center;
+            left: 27px;
+            margin: auto;
+            padding: 9px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            /* color: silver; */
+            font-weight: 400;
+            font-size: medium;
+            /* position: absolute; */
+        }
+
+        .box4 {
+            border: 2px solid white;
+            width: 26.5vw;
+            /* position: absolute; */
+            top: 53px;
+            display: flex;
+            padding: 2px;
+            left: 2px;
+        }
+
+        .box5 {
+            border: 2px solid white;
+            width: 350px;
+            height: 110px;
+
+            position: relative;
+            top: 62px;
+            padding: 2px;
+        }
+
+        .box6 {
+            position: relative;
+            top: 109px;
+            height: 2vh;
+            width: 5.5vw;
+            border-radius: 209px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid whitesmoke;
+
+        }
+
+        .box6:hover {
+            background-color: aliceblue;
+            color: blue;
+            cursor: pointer;
+        }
+
+        .box2:hover {
+            background-color: aliceblue;
+            color: blue;
+            cursor: pointer;
+        }
+
+        .box3:hover {
+            background-color: aliceblue;
+            color: blue;
+            cursor: pointer;
+        }
+
+        .grandParent>.parent>.box1>img {
+            position: relative;
+            left: -55px;
+            top: -11px;
+            height: 35vh;
+            width: 30vw;
+            border-radius: 19px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- card.png is a file which contains a card Image. Write html and css code to design this card. Use #html -->
+    <!-- <div class="grandfather"></div> -->
+    <div class="grandParent">
+
+        <div class="parent">
+
+            <div class="box box1 ">
+
+                <img src="images.jpeg" alt="">
+
+            </div>
+
+            <div class="box box2">
+                <h4>
+                    Nature
+                </h4>
+            </div>
+
+            <div class="box box3">
+                <h4>
+                    Lake
+                </h4>
+            </div>
+
+            <div class="box box4">
+                <h2>Whispers of Nature</h2>
+            </div>
+
+            <div class="box box5">
+                <p>"Peaced together by natures calm hand, where mountains stand tall, trees whisper in the breeze, and
+                    the lake reflects dreams too quiet to speak.Peaced together by natures gentle hand, where ancient
+                    mountains guard the silent lake, tall trees whisper forgotten songs, and every ripple carries the
+                    breath of stillness.In a world peaced together by earth’s quiet magic"</p>
+            </div>
+
+            <div class="box box6 ">
+                Read More
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>
