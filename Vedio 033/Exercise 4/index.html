@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi Color Website</title>
+    <style>
+        :root {
+            --color: beige;
+            --seccolor: aliceblue;
+            --trdcolor: rgb(145, 21, 21);
+            --fourthcolor: lightblue;
+            --fifthcolor: red;
+            --defradius: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--color, aqua);
+        }
+
+        .nav {
+            background-color: var(--seccolor, rgb(177, 161, 192));
+        }
+
+        .nav ul {
+            display: flex;
+            padding: 3px;
+        }
+
+        .nav li {
+            color: var(--trdcolor);
+            list-style: none;
+            margin: 1px 19px;
+            font-weight: bold;
+            font-size: 19px;
+            padding: 5px;
+            cursor: pointer;
+            border-radius: var(--defradius);
+        }
+
+        .nav li:hover {
+            background-color: var(--fourthcolor, rgb(0, 191, 255));
+            color: var(--fifthcolor, rgb(228, 85, 85));
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            margin: 38vh 20vw;
+            font-size: 19px;
+            padding: 2px;
+            cursor: pointer;
+            --defradius: 20px;
+            border-radius: var(--defradius);
+            background-color: var(--trdcolor);
+        }
+        
+        .container h1 {
+            border-radius: var(--defradius);
+        }
+        
+        .container h1:hover {
+            background-color: var(--fourthcolor, rgb(0, 191, 255));
+            color: var(--fifthcolor, rgb(228, 85, 85));
+        }
+        ul li a{
+            background-color:var(  ----seccolor) ;
+            text-decoration: none;
+            color: var(--trdcolor);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--Create a multicolor website which can change color using CSS Variables  -->
+    <div class="nav">
+
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Contact Us</a></li>
+            <li><a href="/">Services</a></li>
+            <li><a href="/">About</a></li>
+        </ul>
+    </div>
+    <div class="container">
+        <h1>Hello world....Sigma Batch OP</h1>
+    </div>
+</body>
+
+</html>
