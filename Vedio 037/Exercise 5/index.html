@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website making</title>
+    <style>
+        :root {
+            --Fircolor: rgb(12, 12, 12);
+            --Seccolor: pink;
+            --text-color: white;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--Fircolor, black);
+        }
+
+        .nav {
+            padding: 13px;
+            background-color: var(--Seccolor);
+            position: sticky;
+            top: 0;
+
+        }
+        ul li {
+            list-style: none;
+            display: inline;
+            padding: 23px;
+        }
+        ul li a {
+            text-decoration: none;
+            color: var(--text-color, blue);
+            font-weight: bolder;
+        }
+
+        footer {
+            background-color: var(--text-color);
+            color: var(--Fircolor);
+            text-align: center;
+            padding: 10px;
+            font-weight: bolder;
+        }
+
+        .Alpha-box {
+            padding: 240px; 
+            margin:15px ;
+            background-color: green;
+            display: flex;
+        }
+
+        .beta-box {
+            padding: 100px;
+            background-color: rgb(8, 8, 8);
+        }
+
+        .beta-box>p {
+            border: 1px solid whitesmoke;
+            justify-content: center;
+            text-align: center;
+            border-radius: 60px;
+            color: white;
+            padding: 100px 20px 100px 20px;
+            font-size: x-large;
+        }
+        .beta-box>img {
+            border-radius: 50%;
+            position: fixed;
+            top: 470px;
+            right: 5px;
+        }
+        .box1{
+            /* border: 1px solid red; */
+            display: inline;
+            padding: 200px;
+            margin: 20px;
+            background-color: rgb(231, 86, 147);
+        }
+        .box2{
+            display: inline;
+            padding: 200px;
+            margin: 20px;
+            background-color: rgb(13, 150, 230);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/">Services</a></li>
+            <li><a href="/">Contact Us</a></li>
+            <li><a href="/">About</a></li>
+        </ul>
+    </div>
+    <div class="Alpha-box">
+          <div class="box1"></div>
+          <div class="box2"></div>
+    </div>
+
+    <div class="beta-box">
+        <p>Welcome to this Sigma Web Development Express</p>
+        <img width="89" src="https://graphicsfamily.com/wp-content/uploads/edd/2018/11/free-circular-logo.jpg" alt="Logo loading...">
+    </div>
+
+    <footer>
+        &copy;Website making,All Rights Reserved
+    </footer>
+</body>
+
+</html>
