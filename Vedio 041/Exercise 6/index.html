@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar using Flexbox</title>
+</head>
+<style>
+    :root {
+        --primary: rgb(87, 86, 86);
+        --sec-color: black;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI";
+    }
+
+    .container {
+        position: sticky;
+        top: 0;
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        font-size: xx-small;
+        flex-wrap: wrap;
+        margin-top: 15px;
+        align-items: center;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: white;
+    }
+
+    .items {
+        font-size: small;
+    }
+
+    .items>a {
+        text-decoration: none;
+        color: var(--primary, black);
+    }
+
+    div>img {
+        margin-left: 50px;
+    }
+
+    .item-5>a {
+        border: 2px solid var(--sec-color);
+        border-radius: 5px;
+        padding: 5px;
+        color: var(--sec-color) !important;
+        margin-left: 60px;
+        font-size: smaller;
+    }
+</style>
+
+<body>
+    <!-- Design this website Navbar using flexbox -->
+
+    <div class="container">
+        <div>
+            <img width="150" src="https://www.ultraedit.com/wp-content/uploads/2023/01/Background-2.png"
+                alt="by Embarcadero loading...">by Embarcadero
+        </div>
+
+        <div class="items item-1"><a href="/">Products</a></div>
+
+        <div class="items item-2"><a href="/">Pricing</a></div>
+
+        <div class="items item-3"><a href="/">Resources</a></div>
+
+        <div class="items item-4"><a href="/">Our company</a></div>
+
+        <div class="items item-5"><a href="/">BUY NOW</a></div>
+
+        <div class="items item-6"><a href="/">English</a></div>
+    </div>
+
+</body>
+
+</html>
