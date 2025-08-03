@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Transforms</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+
+        }
+
+        .box{
+            height: 50px;
+            width: 50px;
+            background-color: beige;
+            border: 2px solid black;
+            /* transform: rotate(40deg); */
+            /* transform: rotate(0.25turn); */
+            /* transform: rotateX(40deg);  can be x,y,z axis */
+            /* transform: scale(1.6); */
+            /* transform: scale3d(); */
+            /* transform: skew(5deg); */
+            /* skew on only x and y axis not on z axis */
+            
+            /* transform: translate(34px); */
+            /* transform: translateY(-100%) skewX(40deg) translateX(45%); */
+            /* if put -100% the bar on y transform will disapear and go to y axis */
+            
+            transform: rotate(0.125turn);
+            /* transform-origin: ; */
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container{
+            width: 100vw;
+            height: 80vh;
+            border: 2px solid purple;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+box 
+        </div>
+    </div>
+</body>
+</html>
