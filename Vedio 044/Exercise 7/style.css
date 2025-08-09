@@ -1,161 +1,182 @@
  :root {
-        --primary: rgb(87, 86, 86);
-        --sec-color: black;
-        --thirdcolor: white;
-    }
+     --primary: rgb(87, 86, 86);
+     --sec-color: black;
+     --thirdcolor: white;
+ }
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Segoe UI";
-    }
+ * {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: "Segoe UI";
+ }
 
-    .container {
-        display: flex;
-        flex-direction: row;
-        gap: 65px;
-        font-size: xx-small;
-        flex-wrap: wrap;
-        margin-top: 15px;
-        align-items: center;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        background-color: var(--thirdcolor, white);
-    }
+ .container {
+     display: flex;
+     flex-direction: row;
+     gap: 65px;
+     font-size: xx-small;
+     flex-wrap: wrap;
+     padding: 20px;
+     align-items: center;
+     background-color: var(--thirdcolor, white);
+     cursor: pointer;
+ }
 
-    .items {
-        font-size: small;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        /* This gives some spacing between text and the icon */
-    }
+ .items {
+     font-size: small;
+     display: flex;
+     align-items: center;
+     gap: 4px;
+ }
 
-    .items>a {
-        text-decoration: none;
-        color: var(--primary, black);
-    }
+ .items a {
+     text-decoration: none;
+     color: var(--primary, black);
+ }
 
-    div>img {
-        margin-left: 50px;
-    }
+ div img {
+     margin-left: 50px;
+ }
 
-    .item-5>a {
-        border: 2px solid var(--sec-color);
-        border-radius: 5px;
-        padding: 5px;
-        color: var(--sec-color) !important;
-        margin-left: 60px;
-        font-size: smaller;
-    }
+ .item-5 a {
+     border: 2px solid var(--sec-color);
+     border-radius: 5px;
+     padding: 5px;
+     color: black;
+     font-weight: bold;
+     font-size: smaller;
+ }
 
-    .containerNo2 {
-        text-align: center;
-        padding: 50px 20px;
-    }
+ .containerNo2 {
+     text-align: center;
+     padding: 50px 20px;
+ }
 
-    .containerNo2 span{
-        font-size: xx-large;
-        font-weight:400;
-        margin-bottom: 20px;
-    }
+ .containerNo2 span {
+     font-size: 40px;
+     font-weight: 400;
+     margin-bottom: 20px;
+ }
 
-    .containerNo2 p {
-        font-size: larger;
-        font-weight: 400;
-        max-width: 600px;
-        margin: 0 auto;
-        margin-top: 30px;
-        margin-bottom: 40px;
-    }
+ .container2 img {
+     width: 100px;
+ }
 
-    .containerNo2>h3 {
-        border: 2px solid var(--sec-color);
-        margin: 0 auto;
-        padding: 10px 10px;
-        height: 80px;
-        text-align: center;
-        justify-self: center;
-        display: flex;
-        align-items: center;
-        background-color: rgb(42, 226, 226);
-        color: var(--thirdcolor);
-        border-radius: 10px;
-        margin-bottom: 100px;
-        cursor: pointer;
-    }
+ .containerNo2 p {
+     font-size: 25px;
+     font-weight: 400;
+     width: 68vw;
+     margin: 0 auto;
+     margin-top: 30px;
+     margin-bottom: 40px;
+ }
 
-    .containerNo2>h3:hover{
-        background-color: aqua;
-    }
+ .button {
+     background-color: #00b6d1;
+     color: white;
+     padding: 14px;
+     border: none;
+     border-radius: 4px;
+     cursor: pointer;
+     font-weight: bold;
+ }
 
-    .containerNo2 h4 span {
-        font-size: xx-large;
-        font-weight: 400;
-    }
+ .containerNo2 button:hover {
+     background-color: aqua;
+ }
 
-    .containerNo2 h4 {
-        font-size: medium;
-        font-weight: 400;
-    }
+ .containerNo2 h4 span {
+     font-size: xx-large;
+     font-weight: 400;
+ }
 
-    .containerNo3 {
-        display: grid;
-        justify-content: center;
-        align-content: center;
-        row-gap: 50px;
-        column-gap: 10px;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        width: 95vw;
-        padding: 40px;
-        margin: 0 auto;
-    }
+ .containerNo2 h4 {
+     font-size: medium;
+     font-weight: 400;
+ }
 
-    .item {
-        background-color: whitesmoke;
-        height: 230px;
-        width: 320px;
-        align-items: center;
-    }
-    
-    .item>h3 {
-        display: flex;
-        justify-self: center;
-        flex-direction: column;
-        margin-bottom: 30px;
-        margin-top: 20px;
-    }
+ .Papa {
+     padding: 12px;
+ }
 
-    .item>h6 {
-        display: flex;
-        justify-self: center;
-        flex-direction: column;
-        margin-bottom: 30px;
-    }
+ .sidekick {
+     display: flex;
+     flex-direction: row;
+     justify-content: start;
+     align-items: center;
+     text-align: center;
+ }
 
-    .item>a {
-        text-decoration: none;
-        background-color: rgb(101, 184, 101);
-        color: var(--thirdcolor);
-        border-radius: 3px;
-        padding: 10px;
-        font-weight: 700;
-        display: flex;
-        justify-self: center;
-        flex-direction: column;
-        margin-bottom: 25px;
-    }
+ .sidekick img {
+     padding-right: 2px;
+ }
 
-    .item>p {
-        display: flex;
-        justify-self: center;
-        flex-direction: column;
-        flex-wrap: wrap;
-        font-size: xx-small;
-        text-align: center;
-        font-weight:lighter;
-    }
+ .sidekick :nth-child(2) {
+     font-size: 30px;
+ }
 
-    .item>a:hover {
-        background-color: green;
-    }
+ .containerNo3 {
+     display: grid;
+     justify-content: center;
+     align-content: center;
+     row-gap: 50px;
+     column-gap: 10px;
+     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+     padding: 12px 122px;
+     margin: 0 auto;
+ }
+
+ .item {
+     background-color: whitesmoke;
+     height: 230px;
+     width: 320px;
+     align-items: center;
+ }
+
+ .item>h3 {
+     display: flex;
+     justify-self: center;
+     flex-direction: column;
+     margin-bottom: 30px;
+     margin-top: 20px;
+ }
+
+ .item>h6 {
+     display: flex;
+     justify-self: center;
+     flex-direction: column;
+     margin-bottom: 30px;
+ }
+
+ .item button {
+     background-color: #5cb85c;
+     padding: 14px;
+     border: none;
+     border-radius: 4px;
+     font-weight: bold;
+     cursor: pointer;
+     display: flex;
+     justify-self: center;
+     flex-direction: column;
+     margin-bottom: 30px;
+ }
+
+ .item button a {
+     text-decoration: none;
+     color: white;
+ }
+
+ .item>p {
+     display: flex;
+     justify-self: center;
+     flex-direction: column;
+     flex-wrap: wrap;
+     font-size: xx-small;
+     text-align: center;
+     font-weight: lighter;
+ }
+
+ .item>a:hover {
+     background-color: green;
+ }
