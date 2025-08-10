@@ -86,52 +86,37 @@
      background-color: aqua;
  }
 
- .containerNo2 h4 span {
-     font-size: xx-large;
-     font-weight: 400;
- }
-
- .containerNo2 h4 {
-     font-size: medium;
-     font-weight: 400;
- }
 
  .Papa {
-     padding: 12px;
+    margin: auto;
+    width: 76vw;
  }
 
- .sidekick {
+ .side {
      display: flex;
-     flex-direction: row;
-     justify-content: start;
      align-items: center;
-     text-align: center;
+   padding: 22px;
+   gap: 12px;
  }
 
- .sidekick img {
-     padding-right: 2px;
- }
-
- .sidekick :nth-child(2) {
+ .side :nth-child(2) {
      font-size: 30px;
  }
 
  .containerNo3 {
      display: grid;
-     justify-content: center;
-     align-content: center;
-     row-gap: 50px;
-     column-gap: 10px;
-     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-     padding: 12px 122px;
+     gap: 12px;
+     grid-template-columns: 1fr 1fr 1fr;
+     width: 63vw;
      margin: 0 auto;
  }
 
  .item {
-     background-color: whitesmoke;
-     height: 230px;
-     width: 320px;
+     display: flex;
+     flex-direction: column;
      align-items: center;
+     background-color: whitesmoke;
+     border-radius: 13px;
  }
 
  .item>h3 {
@@ -169,15 +154,24 @@
 
  .item>p {
      display: flex;
-     justify-self: center;
      flex-direction: column;
-     flex-wrap: wrap;
-     font-size: xx-small;
+     justify-self: center;
      text-align: center;
-     font-weight: lighter;
+     flex-wrap: wrap;
+     font-size: 8px;
+     padding: 15px;
  }
 
-.item button:hover {
+ .item button:hover {
      background-color: rgb(16, 230, 16);
  }
 
+
+ @media only screen and (max-width:700px)
+ {
+     .containerNo3 {
+     grid-template-columns: 1fr;
+     
+ }
+ 
+ }
