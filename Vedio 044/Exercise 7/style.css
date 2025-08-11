@@ -164,11 +164,89 @@ div img {
 @media only screen and (max-width:700px) {
     .containerNo3 {
         grid-template-columns: 1fr;
-
     }
-
     .side {
         justify-content: end;
     }
-
 }
+
+.child {
+    background-color: black;
+    display: grid;
+    justify-content: center;
+}
+
+.contain {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 150px;
+    gap: 20px;
+}
+
+.head {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.paragraph {
+    font-weight: lighter;
+}
+
+.flex {
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    gap: 17px;
+    padding-bottom: 50px;
+}
+.signup{
+    font-weight:lighter;
+    font-size:medium;
+    padding: 29px 5px;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    color: black;
+    border-radius: 10px;
+    padding: 50px;
+    background-color: whitesmoke;
+    margin: 0 auto;
+    gap: 10px;
+}
+
+.login h3 {
+    color: blue;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.login p {
+    text-align: center;
+    padding: 20px;
+}
+
+.login input {
+    padding: 10px;
+    align-items: center;
+}
+
+.btn {
+    color: white;
+    font-size: 15px;
+    font-weight: bolder;
+    padding: 10px;
+    background-color: #00b6d1;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
