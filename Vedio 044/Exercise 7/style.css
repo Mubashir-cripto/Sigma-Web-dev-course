@@ -194,10 +194,9 @@ div img {
 .paragraph {
     font-weight: lighter;
 }
-
 .flex {
-    display: flex; 
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     flex-wrap: wrap;
     align-items: center;
     justify-items: center;
@@ -249,4 +248,9 @@ div img {
     cursor: pointer;
 }
 
+@media only screen and (max-width: 700px) {
+    .flex{
+        grid-template-columns: 1fr;
+    }
+}
 
