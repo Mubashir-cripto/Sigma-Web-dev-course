@@ -5,6 +5,12 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.ancestor {
+    display: grid;
+    grid-template-columns: auto;
+    align-items: center;
+}
+
 .container {
     display: flex;
     flex-direction: row;
@@ -84,6 +90,7 @@ div img {
 .Papa {
     margin: auto;
     width: 76vw;
+    margin-bottom: 50px;
 }
 
 .side {
@@ -111,6 +118,7 @@ div img {
     align-items: center;
     background-color: whitesmoke;
     border-radius: 13px;
+    /* margin-bottom: 100px; */
 }
 
 .item>h3 {
@@ -164,10 +172,13 @@ div img {
 @media only screen and (max-width:700px) {
     .containerNo3 {
         grid-template-columns: 1fr;
+
     }
+
     .side {
         justify-content: end;
     }
+
 }
 
 .child {
@@ -194,6 +205,7 @@ div img {
 .paragraph {
     font-weight: lighter;
 }
+
 .flex {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -204,9 +216,10 @@ div img {
     gap: 17px;
     padding-bottom: 50px;
 }
-.signup{
-    font-weight:lighter;
-    font-size:medium;
+
+.signup {
+    font-weight: lighter;
+    font-size: medium;
     padding: 29px 5px;
 }
 
@@ -249,8 +262,65 @@ div img {
 }
 
 @media only screen and (max-width: 700px) {
-    .flex{
+    .flex {
         grid-template-columns: 1fr;
     }
 }
 
+.GrandChild {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 24px auto;
+}
+
+.conquered {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 60px;
+    align-content: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 62px 0;
+
+}
+
+.effect {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
+
+.logBariar {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.hd {
+    font-weight: 700;
+    text-align: center;
+    margin: auto;
+}
+
+.img {
+    font-size: xx-small;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.img p {
+    font-weight: bolder;
+    text-align: center;
+    font-size: medium;
+}
+
+@media only screen and (max-width: 700px) {
+    .conquered {
+        grid-template-columns: 1fr;
+    }
+}
