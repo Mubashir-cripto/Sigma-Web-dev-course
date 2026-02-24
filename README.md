@@ -7,7 +7,7 @@
 💻 Languages: HTML, CSS, JavaScript, C++, Python  
 🛠️ Tools & Frameworks: React, Express, MongoDB, Git & GitHub
 
-🔭 **My Goals for 2025:**  
+🔭 **My Goals for 2026(Till May):**  
 - Complete the Sigma Web Dev course  
 - Build and deploy at least 5 portfolio projects  
 - Learn more about cloud (AWS, Vercel)
