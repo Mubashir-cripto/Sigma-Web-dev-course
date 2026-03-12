@@ -1,0 +1,62 @@
+<!-- Exercise 004 -->
+<!-- Create a digital seconds clock using set intervals and date object in javascript .The date object can be used to get the date ,time hours and seconds which can be updated using set interval .Try to keep the UI good looking -->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Digital Clock</title>
+
+    <style>
+        body {
+            background: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial;
+            height: 100vh;
+        }
+
+
+        .clock {
+            background: #1e293b;
+            color: #38bdf8;
+            padding: 40px 60px;
+            border-radius: 12px;
+            border: 2px solid black;
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+            font-size: 60px;
+            letter-spacing: 3px
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="clock" id="clock"></div>
+
+    <script>
+        function updateClock() {
+            let now = new Date();
+
+            let hours = now.getHours();
+            let min = now.getMinutes();
+            let sec = now.getSeconds();
+
+            if (hours < 10) hours = "0" + hours;
+            if (min < 10) min = "0" + min;
+            if (sec < 10) sec = "0" + sec;
+
+            document.getElementById("clock").innerHTML = hours + ":" + min + ":" + sec;
+
+        }
+
+        setInterval(updateClock, 1000)
+        updateClock();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+</head>
+
+<body>
+    <script>
+        // Exercise 001 - Guess the number
+        let randomNumber = Math.floor(1 + 100 * Math.random());
+        let guessNumber;
+
+        do {
+            guessNumber = parseFloat(prompt("Guess the number(1 - 100)"));
+
+            if (guessNumber > randomNumber) {
+                alert("To High!");
+            } else if (guessNumber < randomNumber) {
+                alert("Too Low!");
+            } else {
+                alert("Congratulations You Won");
+            }
+
+        } while (guessNumber != randomNumber)
+    </script>
+</body>
+
+</html>

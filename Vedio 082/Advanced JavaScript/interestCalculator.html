@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Interest Calculator</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .container {
+        background: #fff;
+        padding: 20px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+        width: 300px;
+        border-radius: 8px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-top: 10px;
+    }
+
+    input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        margin-top: 15px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    button:hover {
+        background-color: #218838;
+    }
+
+    .error {
+        color: red;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .result {
+        margin-top: 15px;
+        font-weight: bold;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="container">
+
+        <h2>Simple Interest Calculator</h2>
+        <label for="principle">Principle Amount ($)</label>
+        <input type="number" id="principle" placeholder="Enter Principle Amount">
+
+        <label for="rate">Rate of Interest (%)</label>
+        <input type="number" id="rate" placeholder="Enter rate">
+
+        <label for="time">Time (Years)</label>
+        <input type="number" id="time" placeholder="Enter time in years">
+
+        <button onclick="calculateInterest()">Calculate</button>
+
+        <div class="error" id="error"></div>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateInterest() {
+            const principle = parseFloat(document.getElementById("principle").value);
+            const rate = parseFloat(document.getElementById("rate").value);
+            const time = parseFloat(document.getElementById("time").value);
+
+            const errDiv = document.getElementById("error");
+            const resultDiv = document.getElementById("result");
+
+            errDiv.textContent = "";
+            resultDiv.textContent = "";
+
+            if (isNaN(principle) || principle <= 0) {
+                errDiv.textContent = "Please enter a valid principle amount";
+                return;
+            }
+
+            if (isNaN(rate) || rate <= 0) {
+                errDiv.textContent = "Please enter a valid interest rate";
+                return;
+            }
+
+            if (isNaN(time) || time <= 0) {
+                errDiv.textContent = "Please enter a valid time period";
+                return;
+            }
+
+            const simpleInterest = (principle * rate * time) / 100;
+
+            // Display resukts
+            resultDiv.textContent = `Simple Interest : ₹${simpleInterest.toFixed(2)}`;
+        }
+
+    </script>
+</body>
+
+</html>

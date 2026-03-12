@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake ,Water & Gun</title>
+</head>
+
+<body>
+    <script>
+        // Exercise 002 - Snake Water Gun
+        alert("Game of Snake , Water and Gun")
+
+        function randomGuess() {
+            let guessArrow = Math.floor(1 + 3 * Math.random());
+            if (guessArrow == 1) {
+                return "S";
+            } else if (guessArrow == 2) {
+                return "W";
+            } else {
+                return "G";
+            }
+        }
+
+        let playAgain;
+        do {
+
+            let a;
+            let computer;
+            do {
+                a = prompt("Enter S ,W or G").toUpperCase().trim();
+                computer = randomGuess();
+
+                if (a == computer) {
+                    alert("Yay you won the game");
+                } else {
+                    alert("Computer choose " + computer + "-Try again!");
+                }
+            } while (a != computer)
+
+
+            playAgain = confirm("Do you wish to play again?");
+        } while (playAgain)
+
+
+    </script>
+</body>
+
+</html>

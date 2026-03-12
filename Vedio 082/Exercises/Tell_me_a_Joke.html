@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tell me a Joke</title>
+</head>
+
+<body>
+    <script>
+        // Exercise 3 _ Tell me a joke
+
+        (async function getJoke() {
+            let response = await fetch("https://v2.jokeapi.dev/joke/Any"); // or you can also make an array and fetch the data from the array
+            let data = await response.json();
+            console.log(data)
+
+
+            if (data.type === "single") {
+                document.getElementById("jokeBox").innerHTML = data.joke
+            } else {
+                document.getElementById("jokeBox").innerHTML = data.setup + "_" + data.delivery;
+            }
+        })()
+
+    </script>
+</body>
+
+</html>
