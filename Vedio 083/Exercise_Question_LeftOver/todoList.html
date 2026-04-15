@@ -1,0 +1,244 @@
+<!--
+ Exercise 06
+ Create a todo list app capable of storing your TODO's in local storage.Add an option to create ,delete and access all the todo's.
+ Try to make UI as good as possible
+-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>minimal local todo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: system-ui, sans-serif;
+            margin: 0;
+        }
+
+        body {
+            background: #f2f5f9;
+            display: grid;
+            place-items: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+
+        .card {
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            padding: 1.5rem;
+            border-radius: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 1.2rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .row {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        input {
+            flex: 1;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 100px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px #bfdbfe;
+        }
+
+        button {
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 100px;
+            padding: 0.8rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.15s;
+            white-space: nowrap;
+        }
+
+        button:hover {
+            background: #2563eb;
+        }
+
+        .todo-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1rem 0;
+            max-height: 350px;
+            overflow-y: auto;
+        }
+
+        .todo-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f8fafc;
+            padding: 0.6rem 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 100px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .todo-text {
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .delete {
+            background: transparent;
+            border: none;
+            color: #64748b;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0 0.3rem;
+            border-radius: 50%;
+            line-height: 1;
+        }
+
+        .delete:hover {
+            color: #b91c1c;
+            background: #fee2e2;
+        }
+
+        .clear-all {
+            background: #e2e8f0;
+            color: #1e293b;
+            border: none;
+            border-radius: 100px;
+            padding: 0.5rem 1.2rem;
+            font-weight: 500;
+            cursor: pointer;
+            width: fit-content;
+        }
+
+        .clear-all:hover {
+            background: #cbd5e1;
+        }
+
+        .counter {
+            font-size: 0.9rem;
+            color: #475569;
+            margin-bottom: 0.8rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h2>    </h2>
+        <div class="row">
+            <input type="text" id="taskInput" placeholder="write something...">
+            <button id="addBtn">Add</button>
+        </div>
+        <div class="counter" id="counter">0 items</div>
+        <ul class="todo-list" id="todoList"></ul>
+        <button class="clear-all" id="clearAll">clear all</button>
+    </div>
+    <script>
+        (function () {
+            const STORAGE_KEY = 'todos';
+            const input = document.getElementById('taskInput');
+            const addBtn = document.getElementById('addBtn');
+            const todoList = document.getElementById('todoList');
+            const counter = document.getElementById('counter');
+            const clearAll = document.getElementById('clearAll');
+
+            let todos = [];
+
+            // Convert JSON string to JavaScript object
+            function load() {
+                try {
+                    todos = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+                } catch {
+                    todos = [];
+                }
+            }
+
+            // localStorage can only store strings.
+            function save() {
+                localStorage.setItem(STORAGE_KEY, //The key name (e.g. "my-todos")
+                    JSON.stringify(todos));
+            } // Convert array → JSON string for storag
+
+            function render() {
+                if (!todos.length) {
+                    todoList.innerHTML = '<li style="text-align:center;color:#94a3b8;padding:2rem 0;">— empty —</li>';
+                    counter.innerText = '0 items';
+                      return;
+                }
+                let html = '';
+                todos.forEach(t => {
+                    html += `<li class="todo-item" data-id="${t.id}">
+                                <span class="todo-text">${escapeHtml(t.text)}</span>
+                                <button class="delete" data-id="${t.id}" aria-label="delete">✕</button>
+                            </li>`;
+                });
+                todoList.innerHTML = html;
+                counter.innerText = `${todos.length} item${todos.length !== 1 ? 's' : ''}`;
+            }
+
+            function escapeHtml(s) {
+                return String(s).replace(/[&<>"]/g, function (m) {
+                    if (m === '&') return '&amp;'; if (m === '<') return '&lt;'; if (m === '>') return '&gt;'; if (m === '"') return '&quot;';
+                    return m;
+                });
+            }
+
+            function addTodo() {
+                const text = input.value.trim();
+                if (!text) return;
+                todos.push({ id: Date.now() + '-' + Math.random().toString(36).slice(2), text });
+                save(); // Persist to storage
+                render(); // Re-draw the UI
+                input.value = ''; // Clear the input field
+                input.focus(); // Return focus to input
+            }
+        
+            function deleteTodo(id) {
+                todos = todos.filter(t => t.id != id);
+                save(); render();
+            }
+
+            load();
+            render();
+
+            addBtn.addEventListener('click', addTodo);
+            input.addEventListener('keypress', e => { if (e.key === 'Enter') addTodo(); });
+            todoList.addEventListener('click', e => {
+                const del = e.target.closest('.delete');
+                if (del) deleteTodo(del.dataset.id);
+            });
+            clearAll.addEventListener('click', () => {
+                if (todos.length && confirm('Delete all?')) { todos = []; save(); render(); input.focus(); }
+            });
+        })();
+    </script>
+</body>
+
+</html>
+
+<!--
+ ## 
+🔄 The Flow in Summary
+
+Page loads → load() → render()
+User types + clicks Add → addTodo() → save() → render()
+User clicks ✕ → deleteTodo() → save() → render()
+User clicks clear all → todos=[] → save() → render() -->
