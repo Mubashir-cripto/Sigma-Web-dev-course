@@ -1,0 +1,267 @@
+## Types of Middleware in Express.js
+
+Think of middleware as a **chain of functions** that a request passes through before getting a response:
+
+```
+Request → Middleware 1 → Middleware 2 → Middleware 3 → Response
+```
+
+---
+
+## 1. Application-Level Middleware
+
+Runs on **the entire app** — every request goes through it.
+
+```javascript
+const express = require('express');
+const app = express();
+
+// runs on EVERY request
+app.use((req, res, next) => {
+  console.log(`${req.method} request made to: ${req.url}`);
+  next();  // ← MUST call next() to move to the next middleware
+});
+
+// runs only on POST requests
+app.post('/login', (req, res, next) => {
+  console.log('Someone is trying to login');
+  next();
+});
+
+app.get('/', (req, res) => {
+  res.send('Home Page');
+});
+```
+
+```
+GET /         →  logs "GET request made to: /"  →  sends "Home Page"
+POST /login   →  logs both messages             →  continues
+```
+
+### What `next()` does
+```javascript
+app.use((req, res, next) => {
+  console.log('Step 1');
+  next();        // ✅ move to next middleware
+  // no next()  // ❌ request gets stuck here forever
+});
+```
+
+---
+
+## 2. Router-Level Middleware
+
+Same as application-level but **attached to a specific router**, not the whole app.
+
+```javascript
+const express = require('express');
+const router = express.Router();
+
+// runs on every request to this router only
+router.use((req, res, next) => {
+  console.log('Router middleware triggered');
+  next();
+});
+
+router.get('/', (req, res) => {
+  res.send('Blog Home');
+});
+
+router.get('/post', (req, res) => {
+  res.send('Blog Post');
+});
+
+module.exports = router;
+```
+
+```javascript
+// main.js
+app.use('/blog', blog);  // router middleware only runs for /blog routes
+```
+
+### Difference from App-Level
+
+```javascript
+app.use(middlewareA);       // runs for ALL routes in the app
+router.use(middlewareB);    // runs only for routes in that router
+```
+
+---
+
+## 3. Error-Handling Middleware
+
+Special middleware that **catches errors** — it has **4 parameters** instead of 3.
+
+```javascript
+// Normal middleware = 3 params
+app.use((req, res, next) => { ... });
+
+// Error middleware = 4 params (err is first)
+app.use((err, req, res, next) => { ... });
+```
+
+### Full Example
+
+```javascript
+app.get('/user', (req, res, next) => {
+  try {
+    // simulate an error
+    throw new Error('User not found!');
+  } catch (err) {
+    next(err);  // ← pass error to error-handling middleware
+  }
+});
+
+// ⚠️ Must be defined LAST, after all routes
+app.use((err, req, res, next) => {
+  console.error(err.message);
+  res.status(500).json({
+    error: err.message
+  });
+});
+```
+
+```
+GET /user  →  error thrown  →  caught by error middleware  →  sends 500 response
+```
+
+### Key Rules
+```javascript
+// ✅ 4 parameters — Express recognizes it as error handler
+app.use((err, req, res, next) => { ... });
+
+// ❌ 3 parameters — NOT an error handler, won't catch errors
+app.use((req, res, next) => { ... });
+
+// ✅ Always place it at the BOTTOM of your file
+app.use('/blog', blog);
+app.use('/shop', shop);
+app.use((err, req, res, next) => { ... });  // ← last
+```
+
+---
+
+## 4. Built-in Middleware
+
+Middleware that comes **built into Express** — no installation needed.
+
+### `express.json()`
+Parses incoming JSON data from the request body:
+```javascript
+app.use(express.json());
+
+app.post('/login', (req, res) => {
+  console.log(req.body);          // ✅ { username: 'Mubashir', password: '1234' }
+  // without express.json() ↑ this would be undefined
+});
+```
+
+### `express.urlencoded()`
+Parses data from HTML forms:
+```javascript
+app.use(express.urlencoded({ extended: true }));
+
+// Now handles form submissions like:
+// username=Mubashir&password=1234
+app.post('/register', (req, res) => {
+  console.log(req.body.username);  // → "Mubashir"
+});
+```
+
+### `express.static()`
+Serves static files like images, CSS, JS:
+```javascript
+app.use(express.static('public'));
+// Now files in /public folder are accessible directly
+// public/style.css  →  http://localhost:3000/style.css
+// public/logo.png   →  http://localhost:3000/logo.png
+```
+
+---
+
+## 5. Third-Party Middleware
+
+Middleware made by **other developers** — you install via npm.
+
+### Most Common Ones
+
+**`cookie-parser`** — read cookies
+```javascript
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
+app.get('/', (req, res) => {
+  console.log(req.cookies);  // → { token: 'abc123' }
+});
+```
+
+**`morgan`** — logs every request
+```javascript
+const morgan = require('morgan');
+app.use(morgan('dev'));
+// GET /blog 200 5.123 ms - 10  ← auto logged in terminal
+```
+
+**`cors`** — allows React frontend to talk to your backend
+```javascript
+const cors = require('cors');
+app.use(cors());
+// Now your React app on port 3000 can call your Express API on port 5000
+```
+
+**`helmet`** — adds security headers
+```javascript
+const helmet = require('helmet');
+app.use(helmet());  // protects from common attacks
+```
+
+---
+
+## Full Picture Together
+
+```javascript
+const express = require('express');
+const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
+const app = express();
+
+// ── Built-in middleware ──────────────────
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'));
+
+// ── Third-party middleware ───────────────
+app.use(morgan('dev'));
+app.use(cookieParser());
+
+// ── Application-level middleware ─────────
+app.use((req, res, next) => {
+  console.log('Request received');
+  next();
+});
+
+// ── Router-level middleware ──────────────
+app.use('/blog', blogRouter);
+app.use('/shop', shopRouter);
+
+// ── Error-handling middleware (LAST) ─────
+app.use((err, req, res, next) => {
+  res.status(500).json({ error: err.message });
+});
+
+app.listen(3000);
+```
+
+---
+
+## Quick Summary Table
+
+| Type | Scope | Purpose |
+|---|---|---|
+| **Application-level** | Whole app | Logging, auth checks |
+| **Router-level** | One router | Section-specific logic |
+| **Error-handling** | Whole app | Catch & handle errors |
+| **Built-in** | Whole app | JSON, forms, static files |
+| **Third-party** | Whole app | Cookies, CORS, security |
+
+The key rule to remember: **middleware runs top to bottom**, always call `next()` to continue the chain, and always put error handlers **last**. 🔗
