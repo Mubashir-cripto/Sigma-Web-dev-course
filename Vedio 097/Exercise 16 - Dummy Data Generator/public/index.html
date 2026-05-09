@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Employee Generator</title>
+  <style>
+    body {
+      font-family: monospace;
+      background: #0f0f0f;
+      color: #e0e0e0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+
+    h1 { color: #00e5ff; margin-bottom: 20px; }
+
+    button {
+      background: #00e5ff;
+      color: #0f0f0f;
+      border: none;
+      padding: 12px 28px;
+      font-size: 16px;
+      font-family: monospace;
+      cursor: pointer;
+      border-radius: 4px;
+      margin-bottom: 30px;
+    }
+
+    button:hover { background: #00b8d4; }
+
+    #message { margin-bottom: 20px; color: #69ff47; font-size: 14px; }
+
+    table {
+      width: 100%;
+      max-width: 800px;
+      border-collapse: collapse;
+    }
+
+    th {
+      background: #1e1e1e;
+      color: #00e5ff;
+      padding: 10px 14px;
+      text-align: left;
+      border-bottom: 2px solid #00e5ff;
+    }
+
+    td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #2a2a2a;
+    }
+
+    tr:hover td { background: #1a1a1a; }
+
+    .badge {
+      padding: 2px 8px;
+      border-radius: 20px;
+      font-size: 12px;
+    }
+
+    .yes { background: #1b5e20; color: #69ff47; }
+    .no  { background: #3e0000; color: #ff5252; }
+  </style>
+</head>
+<body>
+
+  <h1>Employee Generator</h1>
+  <button id="generateBtn">Generate Data</button>
+  <div id="message"></div>
+
+  <table id="employeeTable">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Salary</th>
+        <th>Language</th>
+        <th>City</th>
+        <th>Manager</th>
+      </tr>
+    </thead>
+    <tbody id="tableBody"></tbody>
+  </table>
+
+  <script>
+    document.getElementById('generateBtn').addEventListener('click', () => {
+      const message   = document.getElementById('message');
+      const tableBody = document.getElementById('tableBody');
+
+      message.textContent = 'Generating...';
+      tableBody.innerHTML = '';
+
+      fetch('/generate', { method: 'POST' })
+        .then(res => res.json())
+        .then(data => {
+          message.textContent = data.message;
+          return fetch('/employees');        // fetch the inserted data to display
+        })
+        .then(res => res.json())
+        .then(employees => {
+          employees.forEach((emp, i) => {
+            const row = `
+              <tr>
+                <td>${i + 1}</td>
+                <td>${emp.Name}</td>
+                <td>$${emp.Salary.toLocaleString()}</td>
+                <td>${emp.Language}</td>
+                <td>${emp.City}</td>
+                <td><span class="badge ${emp.isManager ? 'yes' : 'no'}">
+                  ${emp.isManager ? 'Yes' : 'No'}
+                </span></td>
+              </tr>`;
+            tableBody.innerHTML += row;
+          });
+        })
+        .catch(err => {
+          message.textContent = 'Something went wrong!';
+          console.error(err);
+        });
+    });
+  </script>
+
+</body>
+</html>
